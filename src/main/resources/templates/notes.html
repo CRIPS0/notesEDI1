@@ -2,16 +2,18 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Заметки</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
 <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
     <nav class="my-2 my-md-0 mr-md-3">
-        <img src="https://i.yapx.ru/LaDPk.jpg" class="img-fluid">
         <div class="bd-example">
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Добавить заметку</button>
-            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Добавить
+                заметку
+            </button>
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                 aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -19,9 +21,10 @@
                         </div>
                         <div class="modal-body">
                             <form action="/" method="post">
-                                    <input type="text"  name="title" placeholder="Заголовок" class="form-control "><br>
-                                    <textarea name="mtext" required placeholder="Введите текст" class="form-control"></textarea><br>
-                            <button type="submit" class="btn btn-primary">Добавить</button>
+                                <input type="text" name="title" placeholder="Заголовок" class="form-control "><br>
+                                <textarea name="mtext" required placeholder="Введите текст"
+                                          class="form-control"></textarea><br>
+                                <button type="submit" class="btn btn-primary">Добавить</button>
                             </form>
                         </div>
                     </div>
@@ -40,22 +43,23 @@
 
 <div class="container">
     <div class="wrapper">
-            <div class="card-deck mb-3 text-center">
-                <div class="col">
-                    <div class="card mb-4 shadow-sm"  th:each="el : ${posts}">
-                        <h4 class="card-header" th:text="${el.title}"></h4>
-                        <ul class="list-unstyled mt-3 mb-4 ">
-                            <li class="card-body" th:text="${el.mtext}"></li>
-                            <a th:href="'/notes/' + ${el.id} + '/edit'" class="btn btn-outline-success">Редактировать</a><br><br>
-                            <form th:action="'/notes/' + ${el.id}+ '/remove'" method="post">
-                                <button class="btn btn-outline-danger" type="submit">Удалить</button>
-                            </form>
-                        </ul>
-                    </div>
+        <div class="card-deck mb-3 text-center">
+            <div class="col">
+                <div class="card mb-4 shadow-sm" th:each="el : ${posts}">
+                    <h4 class="card-header" th:text="${el.title}"></h4>
+                    <ul class="list-unstyled mt-3 mb-4 ">
+                        <li class="card-body" th:text="${el.mtext}"></li>
+                        <a th:href="'/notes/' + ${el.id} + '/edit'"
+                           class="btn btn-outline-success">Редактировать</a><br><br>
+                        <form th:action="'/notes/' + ${el.id}+ '/remove'" method="post">
+                            <button class="btn btn-outline-danger" type="submit">Удалить</button>
+                        </form>
+                    </ul>
                 </div>
             </div>
         </div>
     </div>
+</div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 </body>
