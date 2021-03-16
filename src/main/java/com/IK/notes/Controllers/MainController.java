@@ -72,7 +72,21 @@ public class MainController
         return "notes-edit";
     }
 
+    @PostMapping("/notes/{id}/edit")
+    public String notesUpdate(@PathVariable(value = "id") long id, @RequestParam String title, @RequestParam String mtext, Model model){
+        Post post = postRepository.findById(id).orElseThrow();
+        post.setTitle(title);
+        post.setMtext(mtext);
+        postRepository.save(post);
+        return "redirect:/notes";
+    }
 
+    @PostMapping("/notes/{id}/remove")
+    public String notesDelete(@PathVariable(value = "id") long id, Model model){
+        Post post = postRepository.findById(id).orElseThrow();
+        postRepository.delete(post);
+        return "redirect:/notes";
+    }
 
 
     @PostMapping("filter")
